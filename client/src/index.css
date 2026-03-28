@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --felt-dark: #052e16;
+    --felt-mid: #14532d;
+    --felt-light: #166534;
+    --gold: #f59e0b;
+    --gold-light: #fcd34d;
+    --card-red: #dc2626;
+    --card-black: #1c1917;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--felt-dark);
+    font-family: 'Crimson Text', serif;
+    color: #f0fdf4;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer components {
+  .felt-texture {
+    background-color: var(--felt-mid);
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(0,80,40,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(0,60,30,0.3) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23166534'/%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%230d4d25' opacity='0.4'/%3E%3C/svg%3E");
+    background-size: cover, cover, 4px 4px;
+  }
+
+  .card-shadow {
+    box-shadow: 
+      0 1px 3px rgba(0,0,0,0.4),
+      0 4px 12px rgba(0,0,0,0.3),
+      0 0 0 1px rgba(255,255,255,0.05);
+  }
+
+  .card-hover {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow:
+      0 4px 8px rgba(0,0,0,0.5),
+      0 16px 32px rgba(0,0,0,0.4),
+      0 0 20px rgba(245,158,11,0.2);
+  }
+
+  .card-playable {
+    cursor: pointer;
+    ring: 2px;
+    ring-color: rgba(245, 158, 11, 0.5);
+  }
+
+  .table-border {
+    border: 2px solid rgba(245, 158, 11, 0.3);
+    box-shadow: 
+      inset 0 0 60px rgba(0,0,0,0.3),
+      0 0 40px rgba(245, 158, 11, 0.05);
+  }
+
+  .gold-text {
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+  }
+
+  .glass-panel {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .btn-primary {
+    @apply bg-amber-500 hover:bg-amber-400 text-stone-900 font-display font-semibold px-6 py-3 rounded-lg transition-all duration-200;
+    box-shadow: 0 2px 8px rgba(245,158,11,0.4);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 16px rgba(245,158,11,0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-amber-500/40 hover:border-amber-400 text-amber-400 hover:text-amber-300 font-display px-6 py-3 rounded-lg transition-all duration-200;
+  }
+
+  .suit-spades { color: var(--card-black); }
+  .suit-clubs { color: var(--card-black); }
+  .suit-hearts { color: var(--card-red); }
+  .suit-diamonds { color: var(--card-red); }
+
+  .playing-card {
+    width: 70px;
+    height: 100px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 5px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    position: relative;
+    user-select: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .playing-card-lg {
+    width: 80px;
+    height: 115px;
+  }
+
+  .card-back {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f1f35 50%, #1e3a5f 100%);
+    background-image: 
+      linear-gradient(135deg, #1e3a5f 0%, #0f1f35 50%, #1e3a5f 100%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 4px,
+        rgba(255,255,255,0.03) 4px,
+        rgba(255,255,255,0.03) 8px
+      );
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+  }
+
+  .pulse-gold {
+    animation: pulse-gold 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .thulla-banner {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(245,158,11,0.9) 20%, 
+      rgba(251,191,36,1) 50%,
+      rgba(245,158,11,0.9) 80%,
+      transparent 100%
+    );
+    background-size: 200% auto;
+    animation: shimmer 2s linear infinite;
+  }
+}

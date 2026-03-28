@@ -1,0 +1,16 @@
+{
+  "name": "bhabhi-thulla",
+  "version": "1.0.0",
+  "description": "Multiplayer Bhabhi Thulla Card Game",
+  "private": true,
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev": "concurrently --names SERVER,CLIENT --prefix-colors green,cyan \"cd server && npm run dev\" \"cd client && npm run dev\"",
+    "start": "concurrently --names SERVER,CLIENT --prefix-colors green,cyan \"cd server && npm start\" \"cd client && npm run preview\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
