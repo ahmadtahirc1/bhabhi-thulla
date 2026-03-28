@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 
 const SocketContext = createContext(null);
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'https://chatgpt.com/s/t_69c82340e54c8191948ef826fa392e02';
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'bhabhi-thulla-production.up.railway.app';
 
 export function SocketProvider({ children }) {
   // Use state (not ref) so consumers re-render when socket is ready
